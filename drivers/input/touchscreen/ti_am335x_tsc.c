@@ -271,6 +271,8 @@ static irqreturn_t titsc_irq(int irq, void *dev)
 	unsigned int z1, z2, z;
 
 
+//	printk("titsc_irq\r\n");
+	mdelay(1);
 	status = titsc_readl(ts_dev, REG_RAWIRQSTATUS);
 	if (status & IRQENB_HW_PEN) {
 		ts_dev->pen_down = true;
