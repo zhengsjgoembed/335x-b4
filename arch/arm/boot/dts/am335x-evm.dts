@@ -59,7 +59,7 @@
 		compatible = "pwm-backlight";
 		pwms = <&ecap2 0 50000 0>;
 		brightness-levels = <0 51 53 56 62 75 101 152 255>;
-		default-brightness-level = <8>;
+		default-brightness-level = <1>;
 	};
 
 	panel {
@@ -78,16 +78,16 @@
 		};
 
 		display-timings {
-			800x480p62 {
-				clock-frequency = <30000000>;
-				hactive = <800>;
-				vactive = <480>;
-				hfront-porch = <39>;
-				hback-porch = <39>;
-				hsync-len = <47>;
-				vback-porch = <29>;
-				vfront-porch = <13>;
-				vsync-len = <2>;
+			1024x600p62 {
+				clock-frequency = <60000000>;
+				hactive = <1024>;
+				vactive = <600>;
+				hfront-porch = <160>;
+				hback-porch = <140>;
+				hsync-len = <20>;
+				vback-porch = <20>;
+				vfront-porch = <12>;
+				vsync-len = <3>;
 				hsync-active = <1>;
 				vsync-active = <1>;
 			};
@@ -317,6 +317,7 @@
 	user_leds_s0: user_leds_s0 {
                 pinctrl-single,pins = <
                         0x1b4 (PIN_OUTPUT_PULLDOWN | MUX_MODE7)  /* gpmc_ad4.gpio1_4 */
+			0x138 (PIN_INPUT_PULLUP | MUX_MODE7)	
                 >;
         };
 
@@ -352,6 +353,11 @@
 
 	tps: tps@2d {
 		reg = <0x2d>;
+	};
+	
+	gxlx680: gxlx680@40{
+		compatible = "gslx680";
+		reg = <0x40>;
 	};
 };
 
